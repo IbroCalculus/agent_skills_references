@@ -1,0 +1,14 @@
+# Advanced Melos CI Pipeline Scripts
+
+scripts:
+  lint:check:
+    run: melos exec -- dart format --output=none --set-exit-if-changed .
+    description: Validate formatting across the entire monorepo.
+
+  fix:all:
+    run: melos exec -- dart fix --apply
+    description: Automatically apply mechanical fixes across all packages.
+
+  coverage:merge:
+    run: melos exec --dir-exists="test" -- flutter test --coverage
+    description: Generate lcov coverage reports for every package.
